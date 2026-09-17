@@ -1,13 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Pawan Singh -  DevOps Engineer | Azure | Kubernetes | Terraform | Jenkins | DevSecOps">
+    <title>Pawan Singh | Senior DevOps Engineer</title>
 
-    <title>Pawan Singh | DevOps Engineer</title>
+    <meta name="description"
+        content="Pawan Singh - Senior DevOps Engineer specializing in Azure, Kubernetes, Terraform, Jenkins, Docker, CI/CD and DevSecOps.">
+
+    <meta name="author" content="Pawan Singh">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,28 +21,29 @@
     <!-- ================= NAVBAR ================= -->
 
     <header class="navbar">
-
         <div class="container nav-container">
 
-            <div class="logo">
+            <a href="#home" class="logo">
                 Pawan<span>.</span>
-            </div>
+            </a>
 
             <nav>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
+                <a href="#certification">Certification</a>
                 <a href="#education">Education</a>
                 <a href="#contact">Contact</a>
             </nav>
 
-            <a href="assets/resume.pdf" download class="nav-resume">
-                Download Resume
+            <a href="assets/resume.pdf"
+                class="btn btn-primary nav-resume"
+                target="_blank">
+                Resume
             </a>
 
         </div>
-
     </header>
 
 
@@ -49,11 +54,15 @@
         <div class="container hero-container">
 
             <div class="hero-content">
-            <div class="hero-photo">
-    <img src="assets/profile.jpg" alt="Pawan Singh -  DevOps Engineer">
-</div>
+
+                <!-- Photo is also styled through CSS before the name -->
+                <div class="hero-photo">
+                    <img src="assets/profile.jpg"
+                        alt="Pawan Singh - Senior DevOps Engineer">
+                </div>
+
                 <p class="hero-small">
-                     DEVOPS ENGINEER
+                    SENIOR DEVOPS ENGINEER
                 </p>
 
                 <h1>
@@ -73,87 +82,92 @@
 
                 <div class="hero-buttons">
 
-                    <a href="assets/resume.pdf"
-                       download
-                       class="btn btn-primary">
-                        Download Resume
+                    <a href="#contact" class="btn btn-primary">
+                        Let's Connect
                     </a>
 
-                    <a href="#experience"
-                       class="btn btn-secondary">
-                        View My Career
+                    <a href="assets/resume.pdf"
+                        class="btn btn-outline"
+                        target="_blank">
+                        View Resume
                     </a>
 
                 </div>
 
-                <div class="hero-stats">
+                <div class="hero-socials">
 
-                    <div>
-                        <strong>13+</strong>
-                        <span>Years Experience</span>
-                    </div>
+                    <a href="https://github.com/Pawansingh845"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        GitHub
+                    </a>
 
-                    <div>
-                        <strong>5+</strong>
-                        <span>Years DevOps</span>
-                    </div>
+                    <span>•</span>
 
-                    <div>
-                        <strong>Azure</strong>
-                        <span>Cloud Platform</span>
-                    </div>
+                    <a href="mailto:pawan.ardom@gmail.com">
+                        Email
+                    </a>
+
+                    <span>•</span>
+
+                    <a href="tel:+919151625909">
+                        Phone
+                    </a>
 
                 </div>
 
             </div>
 
 
-            <!-- Terminal -->
+            <!-- TERMINAL -->
 
             <div class="terminal">
 
                 <div class="terminal-header">
-
                     <span></span>
                     <span></span>
                     <span></span>
-
-                    <p>pawan@devops:~</p>
-
                 </div>
 
                 <div class="terminal-body">
 
                     <p>
-                        <b>$</b> whoami
+                        <span class="terminal-green">$</span>
+                        whoami
                     </p>
 
                     <p class="terminal-output">
-                        Senior DevOps Engineer
+                        pawan@devops:~$ Senior DevOps Engineer
                     </p>
 
                     <p>
-                        <b>$</b> skills
+                        <span class="terminal-green">$</span>
+                        kubectl get pods
                     </p>
 
                     <p class="terminal-output">
-                        Azure | Kubernetes | Terraform
+                        NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATUS
                     </p>
 
                     <p class="terminal-output">
-                        Jenkins | Docker | Ansible
+                        api-server&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running
                     </p>
 
                     <p class="terminal-output">
-                        DevSecOps | CI/CD | Git
+                        frontend&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running
+                    </p>
+
+                    <p class="terminal-output">
+                        database&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Running
                     </p>
 
                     <p>
-                        <b>$</b> status
+                        <span class="terminal-green">$</span>
+                        terraform apply
                     </p>
 
                     <p class="terminal-success">
-                        ● Available for opportunities
+                        ✔ Infrastructure deployed successfully
                     </p>
 
                 </div>
@@ -171,39 +185,61 @@
 
         <div class="container">
 
-            <div class="section-title">
+            <p class="hero-small">
+                ABOUT ME
+            </p>
 
-                <span>01</span>
+            <h2 class="section-title">
+                Building <span>reliable infrastructure.</span>
+            </h2>
 
-                <h2>
-                    Professional Summary
-                </h2>
+            <div class="about-grid">
 
-            </div>
+                <div class="about-text">
 
+                    <p>
+                        I am a Senior DevOps Engineer with 13+ years of
+                        overall IT experience and 7+ years of relevant
+                        DevOps experience.
+                    </p>
 
-            <div class="about-content">
+                    <p>
+                        I specialize in Azure cloud, CI/CD automation,
+                        Kubernetes, Docker, Terraform, Jenkins, Ansible
+                        and DevSecOps practices.
+                    </p>
 
-                <p>
-                    Results-driven Senior DevOps Engineer with a total of
-                    <strong>13 years</strong> and
-                    <strong>5+ years of relevant experience</strong>
-                    in DevOps engineering, secure, scalable and highly
-                    automated cloud-native platforms across Microsoft Azure.
-                </p>
+                    <p>
+                        My focus is on building secure, scalable and
+                        highly automated infrastructure while improving
+                        deployment reliability and operational efficiency.
+                    </p>
 
-                <p>
-                    Proven track record embedding security-as-code into
-                    every stage of the software delivery lifecycle —
-                    integrating SAST, secrets scanning, and
-                    compliance-as-code into CI/CD pipelines.
-                </p>
+                </div>
 
-                <p>
-                    Deep expertise in Kubernetes (AKS), Terraform, Helm,
-                    CI/CD and infrastructure automation, with experience
-                    implementing Zero Trust security models.
-                </p>
+                <div class="about-stats">
+
+                    <div class="stat-card">
+                        <strong>13+</strong>
+                        <span>Years Overall</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>7+</strong>
+                        <span>Years DevOps</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>Azure</strong>
+                        <span>Cloud</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <strong>DevSecOps</strong>
+                        <span>Automation</span>
+                    </div>
+
+                </div>
 
             </div>
 
@@ -214,169 +250,83 @@
 
     <!-- ================= SKILLS ================= -->
 
-    <section id="skills" class="section skills-section">
+    <section id="skills" class="section section-dark">
 
         <div class="container">
 
-            <div class="section-title">
+            <p class="hero-small">
+                TECHNICAL SKILLS
+            </p>
 
-                <span>02</span>
-
-                <h2>
-                    Technical Skills
-                </h2>
-
-            </div>
-
+            <h2 class="section-title">
+                Tools I <span>work with.</span>
+            </h2>
 
             <div class="skills-grid">
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        ☁
-                    </div>
-
-                    <h3>
-                        Cloud Platforms
-                    </h3>
-
+                    <h3>☁️ Cloud & Azure</h3>
                     <p>
-                        Microsoft Azure, AZ-104, AWS, VPC, IAM, S3,
-                        AKS, Azure Front Door, Azure Key Vault,
+                        Microsoft Azure, Virtual Machines, VNets,
+                        NSG, Load Balancer, Key Vault, Storage,
                         Azure Container Registry
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        🛡
-                    </div>
-
-                    <h3>
-                        DevSecOps & Security
-                    </h3>
-
+                    <h3>⚙️ CI/CD</h3>
                     <p>
-                        SAST, DAST, IAST, SIEM, TFsec, Checkov,
-                        TruffleHog, Zero Trust, IAM, Secrets Management,
-                        Microsoft Defender for Cloud
+                        Jenkins, Azure DevOps, YAML Pipelines,
+                        Pipeline as Code, Build and Release Automation
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        ⚙
-                    </div>
-
-                    <h3>
-                        CI/CD & GitOps
-                    </h3>
-
+                    <h3>🐳 Docker</h3>
                     <p>
-                        Jenkins, Azure DevOps, GitHub, ArgoCD,
-                        Helm, Multi-Stage YAML Pipelines,
-                        Shift-Left Security
+                        Docker, Docker Compose, Container Images,
+                        Container Registry and Deployment
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        ☸
-                    </div>
-
-                    <h3>
-                        Kubernetes & Containers
-                    </h3>
-
+                    <h3>☸️ Kubernetes</h3>
                     <p>
-                        Kubernetes, AKS, EKS, Docker, Helm,
-                        RBAC, Network Policies, Pod Security Standards,
-                        Trivy, Clair
+                        Kubernetes, AKS, Pods, Services, Deployments,
+                        Helm, RBAC, Ingress and Network Policies
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        🏗
-                    </div>
-
-                    <h3>
-                        Infrastructure as Code
-                    </h3>
-
+                    <h3>🏗️ Terraform</h3>
                     <p>
-                        Terraform, Modules, Workspaces,
-                        Remote State, Chef InSpec
+                        Infrastructure as Code, Azure Infrastructure,
+                        Modules, Remote State and Automation
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        Monitoring
-                    </h3>
-
+                    <h3>🔐 DevSecOps</h3>
                     <p>
-                        Prometheus, Grafana, Loki, Azure Monitor,
-                        Log Analytics, SIEM Alerting
+                        SonarQube, Trivy, Security Scanning,
+                        SAST, DAST and CI/CD Security Gates
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        🐧
-                    </div>
-
-                    <h3>
-                        Linux & Scripting
-                    </h3>
-
+                    <h3>📜 Ansible & Linux</h3>
                     <p>
-                        Linux, RHEL, CentOS, Ubuntu,
-                        Bash, Shell Scripting, YAML
+                        Ansible, Linux/Unix, Shell Scripting,
+                        Configuration Management and Automation
                     </p>
-
                 </div>
 
-
                 <div class="skill-card">
-
-                    <div class="skill-icon">
-                        🔀
-                    </div>
-
-                    <h3>
-                        Version Control
-                    </h3>
-
+                    <h3>🔀 Git & Version Control</h3>
                     <p>
-                        Git, GitHub, Git branching,
-                        Merge, Rebase and Repository Management
+                        Git, GitHub, Branching, Merging, Rebase,
+                        Pull Requests and Repository Management
                     </p>
-
                 </div>
 
             </div>
@@ -392,51 +342,38 @@
 
         <div class="container">
 
-            <div class="section-title">
+            <p class="hero-small">
+                EXPERIENCE
+            </p>
 
-                <span>03</span>
-
-                <h2>
-                    Professional Experience
-                </h2>
-
-            </div>
-
+            <h2 class="section-title">
+                Professional <span>journey.</span>
+            </h2>
 
             <div class="timeline">
 
 
-                <!-- Transtrack -->
+                <!-- TRANSTRACK -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Sep 2026 – Present
+                        </span>
 
-                            <div>
+                        <h3>
+                            DevOps Engineer
+                        </h3>
 
-                                <h3>
-                                    Transtrack Aroservices Pvt. Ltd.
-                                </h3>
-
-                                <p>
-                                    DevOps Engineer
-                                </p>
-
-                            </div>
-
-                            <span>
-                                Sep 2026 – Present
-                            </span>
-
-                        </div>
-
+                        <h4>
+                            Transtrack Aroservices Pvt. Ltd.
+                        </h4>
 
                         <ul>
-
                             <li>
                                 Built and maintained secure CI/CD pipelines
                                 using Jenkins and Azure DevOps.
@@ -448,30 +385,19 @@
                             </li>
 
                             <li>
-                                Implemented Deployments, Services,
-                                Ingress, RBAC and namespace configurations.
-                            </li>
-
-                            <li>
                                 Automated Azure infrastructure provisioning
                                 using Terraform.
                             </li>
 
                             <li>
-                                Worked with VNet, NSG, AKS, ACR,
-                                Key Vault and Load Balancer.
+                                Implemented Kubernetes ingress, DNS and
+                                TLS/SSL certificates.
                             </li>
 
                             <li>
-                                Implemented Kubernetes ingress, DNS,
-                                TLS/SSL certificates and networking.
+                                Monitored and troubleshot CI/CD pipelines
+                                and deployment issues.
                             </li>
-
-                            <li>
-                                Troubleshot CI/CD pipelines, Kubernetes
-                                workloads, containers and networking issues.
-                            </li>
-
                         </ul>
 
                     </div>
@@ -479,202 +405,92 @@
                 </div>
 
 
-                <!-- Reliance -->
+                <!-- RELIANCE -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Feb 2022 – Sep 2026
+                        </span>
 
-                            <div>
+                        <h3>
+                            DevOps / Cloud / Infrastructure
+                        </h3>
 
-                                <h3>
-                                    Reliance Industries Ltd
-                                </h3>
+                        <h4>
+                            Reliance Industries Ltd
+                        </h4>
 
-                                <p>
-                                    DevOps / Cloud / Infrastructure
-                                </p>
-
-                            </div>
-
-                            <span>
-                                Feb 2022 – Sep 2026
-                            </span>
-
-                        </div>
-
-
-                        <ul>
-
-                            <li>
-                                Built end-to-end secure CI/CD pipelines
-                                using Azure DevOps multi-stage YAML and Jenkins.
-                            </li>
-
-                            <li>
-                                Embedded SAST, secrets scanning and DAST
-                                as mandatory PR gate controls.
-                            </li>
-
-                            <li>
-                                Designed and enforced Zero Trust security
-                                across multiple cloud environments.
-                            </li>
-
-                            <li>
-                                Implemented IAM least privilege,
-                                Azure AD Conditional Access and Kubernetes RBAC.
-                            </li>
-
-                            <li>
-                                Built reusable Terraform modules for VNet,
-                                NSG, AKS, ACR, Key Vault and Load Balancer.
-                            </li>
-
-                            <li>
-                                Implemented Terraform remote state using
-                                Azure Blob Storage.
-                            </li>
-
-                            <li>
-                                Orchestrated microservices on Kubernetes AKS
-                                using Helm.
-                            </li>
-
-                            <li>
-                                Implemented Pod Security Standards and
-                                Network Policies.
-                            </li>
-
-                            <li>
-                                Integrated Trivy and Clair for container
-                                image security scanning.
-                            </li>
-
-                            <li>
-                                Performed VM capacity planning,
-                                performance monitoring and resource optimization.
-                            </li>
-
-                            <li>
-                                Built Shell Scripts for log analysis,
-                                health checks, backup validation and maintenance.
-                            </li>
-
-                            <li>
-                                Mentored DevOps engineers in DevSecOps
-                                and shift-left security practices.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Worked across cloud infrastructure, DevOps
+                            automation, CI/CD, containerization,
+                            Kubernetes and enterprise infrastructure
+                            operations.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Aerial -->
+                <!-- AERIAL -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Aug 2021 – Feb 2022
+                        </span>
 
-                            <div>
+                        <h3>
+                            DevOps / Infrastructure
+                        </h3>
 
-                                <h3>
-                                    Aerial Telecom Solutions Pvt. Ltd
-                                </h3>
+                        <h4>
+                            Aerial Telecom Solutions Pvt. Ltd
+                        </h4>
 
-                            </div>
-
-                            <span>
-                                Aug 2021 – Feb 2022
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Designed and maintained CI/CD pipelines
-                                using Jenkins, GitHub Actions and GitLab CI.
-                            </li>
-
-                            <li>
-                                Containerized 15+ application services
-                                using Docker and Kubernetes Helm.
-                            </li>
-
-                            <li>
-                                Managed Terraform remote-state infrastructure.
-                            </li>
-
-                            <li>
-                                Configured Prometheus and Grafana
-                                monitoring dashboards.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Worked on infrastructure, automation,
+                            deployment and operational activities.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Ardom Towergen -->
+                <!-- ARDOM TOWERGEN -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Nov 2019 – Aug 2021
+                        </span>
 
-                            <div>
+                        <h3>
+                            Infrastructure / DevOps
+                        </h3>
 
-                                <h3>
-                                    Ardom Towergen Pvt. Ltd
-                                </h3>
+                        <h4>
+                            Ardom Towergen Pvt. Ltd
+                        </h4>
 
-                            </div>
-
-                            <span>
-                                Nov 2019 – Aug 2021
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Led migration of legacy telecom workloads.
-                            </li>
-
-                            <li>
-                                Managed Kubernetes microservices with HPA
-                                and resource quotas.
-                            </li>
-
-                            <li>
-                                Provisioned infrastructure using Terraform
-                                and AWS CloudFormation.
-                            </li>
-
-                            <li>
-                                Managed 50+ VMware vSphere VMs across
-                                production and staging.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Worked on infrastructure operations,
+                            monitoring, automation and technical support.
+                        </p>
 
                     </div>
 
@@ -687,167 +503,114 @@
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Jun 2016 – Nov 2019
+                        </span>
 
-                            <div>
+                        <h3>
+                            IT / Infrastructure
+                        </h3>
 
-                                <h3>
-                                    B4S Solutions Pvt. Ltd
-                                </h3>
+                        <h4>
+                            B4S Solutions Pvt. Ltd
+                        </h4>
 
-                            </div>
-
-                            <span>
-                                Jun 2016 – Nov 2019
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Managed and CIS-hardened 100+ Linux servers.
-                            </li>
-
-                            <li>
-                                Worked with CentOS, RHEL, Ubuntu and VMware ESXi.
-                            </li>
-
-                            <li>
-                                Implemented automated disaster recovery procedures.
-                            </li>
-
-                            <li>
-                                Worked with firewall, ACL, VPN and IDS hardening.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Worked on enterprise IT infrastructure,
+                            operations and technical support.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Kutumbh -->
+                <!-- KUTUMBH CARE -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Sep 2015 – Apr 2016
+                        </span>
 
-                            <div>
+                        <h3>
+                            IT / Infrastructure
+                        </h3>
 
-                                <h3>
-                                    Kutumbh Care Pvt. Ltd
-                                </h3>
+                        <h4>
+                            Kutumbh Care Pvt. Ltd
+                        </h4>
 
-                            </div>
-
-                            <span>
-                                Sep 2015 – Apr 2016
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Managed Linux and VMware ESXi environments.
-                            </li>
-
-                            <li>
-                                Configured vSwitches, VLANs and firewall rules.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Managed infrastructure and technical
+                            operational activities.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Ardom Telecom -->
+                <!-- ARDOM TELECOM -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Jun 2014 – Aug 2015
+                        </span>
 
-                            <div>
+                        <h3>
+                            IT / Telecom
+                        </h3>
 
-                                <h3>
-                                    Ardom Telecom Pvt. Ltd
-                                </h3>
+                        <h4>
+                            Ardom Telecom Pvt. Ltd
+                        </h4>
 
-                            </div>
-
-                            <span>
-                                Jun 2014 – Aug 2015
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Administered Linux server environments.
-                            </li>
-
-                            <li>
-                                Managed users, monitoring, security patching
-                                and backup/recovery.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Worked on technical operations,
+                            infrastructure and telecom-related activities.
+                        </p>
 
                     </div>
 
                 </div>
 
 
-                <!-- Team Lease -->
+                <!-- TEAM LEASE -->
 
                 <div class="timeline-item">
 
                     <div class="timeline-dot"></div>
 
-                    <div class="experience-card">
+                    <div class="timeline-content">
 
-                        <div class="experience-header">
+                        <span class="timeline-date">
+                            Nov 2013 – May 2014
+                        </span>
 
-                            <div>
+                        <h3>
+                            IT / Technical Support
+                        </h3>
 
-                                <h3>
-                                    Team Lease Pvt. Ltd
-                                </h3>
+                        <h4>
+                            Team Lease Pvt. Ltd
+                        </h4>
 
-                            </div>
-
-                            <span>
-                                Nov 2013 – May 2014
-                            </span>
-
-                        </div>
-
-                        <ul>
-
-                            <li>
-                                Configured devices for LAN/WAN telecom infrastructure.
-                            </li>
-
-                            <li>
-                                Automated network diagnostics using Python scripts.
-                            </li>
-
-                        </ul>
+                        <p>
+                            Worked on technical support and IT
+                            operational activities.
+                        </p>
 
                     </div>
 
@@ -862,35 +625,34 @@
 
     <!-- ================= CERTIFICATION ================= -->
 
-    <section class="section dark-section">
+    <section id="certification" class="section section-dark">
 
         <div class="container">
 
-            <div class="section-title">
+            <p class="hero-small">
+                CERTIFICATION
+            </p>
 
-                <span>04</span>
+            <h2 class="section-title">
+                Professional <span>certification.</span>
+            </h2>
 
-                <h2>
-                    Certification
-                </h2>
+            <div class="cert-grid">
 
-            </div>
-
-            <div class="certification-card">
-
-                <div class="certificate-icon">
-                    AZ
-                </div>
-
-                <div>
+                <div class="cert-card">
 
                     <h3>
-                        Microsoft Certified: Azure Fundamentals
+                        Microsoft Certified:
+                        Azure Fundamentals
                     </h3>
 
                     <p>
-                        AZ-900 — Microsoft
+                        AZ-900
                     </p>
+
+                    <span>
+                        Microsoft Azure
+                    </span>
 
                 </div>
 
@@ -907,16 +669,13 @@
 
         <div class="container">
 
-            <div class="section-title">
+            <p class="hero-small">
+                EDUCATION
+            </p>
 
-                <span>05</span>
-
-                <h2>
-                    Education
-                </h2>
-
-            </div>
-
+            <h2 class="section-title">
+                Academic <span>background.</span>
+            </h2>
 
             <div class="education-grid">
 
@@ -954,25 +713,34 @@
 
     <!-- ================= LANGUAGES ================= -->
 
-    <section class="languages">
+    <section id="languages" class="section section-dark">
 
         <div class="container">
 
-            <div class="section-title">
+            <p class="hero-small">
+                LANGUAGES
+            </p>
 
-                <span>06</span>
+            <h2 class="section-title">
+                Communication <span>skills.</span>
+            </h2>
 
-                <h2>
-                    Languages
-                </h2>
+            <div class="language-grid">
 
-            </div>
+                <div class="language-card">
+                    <h3>English</h3>
+                    <span>Professional Fluency</span>
+                </div>
 
-            <div class="language-list">
+                <div class="language-card">
+                    <h3>Hindi</h3>
+                    <span>Native</span>
+                </div>
 
-                <span>English — Professional Fluency</span>
-                <span>Hindi — Native</span>
-                <span>Marathi</span>
+                <div class="language-card">
+                    <h3>Marathi</h3>
+                    <span>Language</span>
+                </div>
 
             </div>
 
@@ -983,125 +751,156 @@
 
     <!-- ================= CONTACT ================= -->
 
-    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="contact-section">
 
-<section id="contact" class="contact-section">
+        <div class="container contact-container">
 
-    <div class="container contact-container">
+            <div class="contact-info">
 
-        <!-- Contact Information -->
-        <div class="contact-info">
+                <div class="profile-box">
+                    <img src="assets/profile.jpg"
+                        alt="Pawan Singh">
+                </div>
 
-            <div class="profile-box">
-                <img src="assets/profile.jpg" alt="Pawan Singh">
+                <p class="hero-small">
+                    LET'S CONNECT
+                </p>
+
+                <h2>
+                    Let's build something
+                    <span>great.</span>
+                </h2>
+
+                <p>
+                    DevOps • Cloud • Kubernetes • DevSecOps
+                </p>
+
+                <div class="contact-details">
+
+                    <p>
+                        📧
+                        <a href="mailto:pawan.ardom@gmail.com">
+                            pawan.ardom@gmail.com
+                        </a>
+                    </p>
+
+                    <p>
+                        📱
+                        <a href="tel:+919151625909">
+                            +91 9151625909
+                        </a>
+                    </p>
+
+                    <p>
+                        🐙
+                        <a href="https://github.com/Pawansingh845"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                    </p>
+
+                </div>
+
             </div>
 
-            <p class="hero-small">
-                LET'S CONNECT
-            </p>
 
-            <h2>
-                Let's build something
-                <span>great.</span>
-            </h2>
+            <!-- FORM -->
 
-            <p>
-                DevOps • Cloud • Kubernetes • DevSecOps
-            </p>
+            <div class="contact-form">
 
-            <div class="contact-details">
+                <h3>
+                    Send Me a Message
+                </h3>
+
+                <form action="https://formspree.io/f/xrpbgayq"
+                    method="POST">
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        required>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Your Email"
+                        required>
+
+                    <input
+                        type="text"
+                        name="subject"
+                        placeholder="Subject"
+                        required>
+
+                    <textarea
+                        name="message"
+                        rows="6"
+                        placeholder="Write your message..."
+                        required></textarea>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+                        Send Message 🚀
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <h3>
+                    Pawan<span>.</span>
+                </h3>
 
                 <p>
-                    📧
-                    <a href="mailto:pawan.ardom@gmail.com">
-                        pawan.ardom@gmail.com
-                    </a>
+                    Senior DevOps Engineer
                 </p>
 
-                <p>
-                    📱
-                    <a href="tel:+919151625909">
-                        +91 9151625909
-                    </a>
-                </p>
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+
+            <div class="footer-bottom">
 
                 <p>
-                    🐙
-                    <a href="https://github.com/Pawansingh845"
-                       target="_blank">
-                        GitHub
-                    </a>
+                    © 2026 Pawan Singh. All rights reserved.
                 </p>
 
             </div>
 
         </div>
 
-
-        <!-- Send Message Form -->
-        <div class="contact-form">
-
-            <h3>Send Me a Message</h3>
-
-            <form action="https://formspree.io/f/xrpbgayq"
-              method="POST">
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                >
-
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                >
-
-                <input
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                    required
-                >
-
-                <textarea
-                    name="message"
-                    rows="6"
-                    placeholder="Write your message..."
-                    required
-                ></textarea>
-
-                <button
-                    type="submit"
-                    class="btn btn-primary">
-                    Send Message 🚀
-                </button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</section>
+    </footer>
 
 
-<!-- ================= FOOTER ================= -->
+    <script src="script.js"></script>
 
-<footer>
+</body>
 
-    <div class="container footer-container">
-
-        <p>
-            © 2026 Pawan Singh
-        </p>
-
-        <p>
-             DevOps Engineer
-        </p>
-
-    </div>
-
-</footer>
+</html>
+```
