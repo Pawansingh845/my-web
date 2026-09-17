@@ -1541,3 +1541,45 @@ nav a.active {
         height: 90px;
     }
 }
+
+/* ================= HERO NAME + PHOTO ================= */
+
+.hero-content h1 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hero-content h1::before {
+    content: "";
+    width: 65px;
+    height: 65px;
+    flex-shrink: 0;
+
+    background-image: url("assets/profile.jpg");
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 8px;
+    border: 2px solid var(--green);
+
+    box-shadow: 0 0 18px rgba(71, 230, 161, 0.18);
+}
+
+/* Remove separate Hero photo */
+.hero-photo {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 650px) {
+
+    .hero-content h1 {
+        gap: 10px;
+    }
+
+    .hero-content h1::before {
+        width: 50px;
+        height: 50px;
+    }
+}
