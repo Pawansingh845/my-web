@@ -1469,15 +1469,12 @@ nav a.active {
     align-items: center;
 }
 
-.hero-photo img {
-    width: 320px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #ffffff;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+.hero-photo {
+    flex: 0 0 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 /* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
