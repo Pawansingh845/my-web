@@ -1983,3 +1983,96 @@ html {
         transform: translateY(-6px);
     }
 }
+/* =========================================================
+   PREMIUM DEVOPS BACKGROUND
+   ========================================================= */
+
+body {
+    background:
+        radial-gradient(circle at 15% 15%, rgba(71, 230, 161, 0.08), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(101, 183, 255, 0.07), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(71, 230, 161, 0.045), transparent 35%),
+        #050b12;
+    background-attachment: fixed;
+}
+
+
+/* subtle grid */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
+}
+
+
+/* HERO */
+.hero {
+    background:
+        radial-gradient(
+            circle at 70% 35%,
+            rgba(71, 230, 161, .10),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #050b12 0%,
+            #07131d 55%,
+            #061019 100%
+        );
+}
+
+
+/* normal sections */
+.section {
+    background: transparent;
+}
+
+
+/* alternate dark sections */
+.section-dark,
+.dark-section {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 18, 28, .92),
+            rgba(4, 10, 16, .96)
+        );
+}
+
+
+/* CONTACT */
+.contact-section {
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(71, 230, 161, .09),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(101, 183, 255, .07),
+            transparent 30%
+        ),
+        #050b12;
+}
+
+
+/* FOOTER */
+footer {
+    background: #03070c;
+    border-top: 1px solid rgba(71, 230, 161, .12);
+}
