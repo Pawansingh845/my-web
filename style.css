@@ -1494,3 +1494,50 @@ nav a.active {
         height: 220px;
     }
 }
+
+/* ================= HERO PHOTO - SMALL ================= */
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-photo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-photo img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--green);
+    box-shadow: 0 0 25px rgba(71, 230, 161, 0.18);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .hero-container {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .hero-photo {
+        order: -1;
+    }
+
+    .hero-photo img {
+        width: 90px;
+        height: 90px;
+    }
+}
