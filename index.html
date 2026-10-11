@@ -17,21 +17,15 @@
     
 <!-- AI Chatbot -->
 <div id="chatbot">
-    
+   ```html
 <button
     id="chat-toggle"
     type="button"
     aria-label="Open AI chat"
-    onclick="
-        const panel = document.getElementById('chat-window');
-        panel.classList.remove('chat-hidden');
-        panel.style.setProperty('display', 'flex', 'important');
-        panel.style.setProperty('visibility', 'visible', 'important');
-        panel.style.setProperty('opacity', '1', 'important');
-    "
+    aria-expanded="false"
     style="position:fixed;right:24px;bottom:96px;z-index:2147483647;pointer-events:auto;cursor:pointer;"
 >💬</button>
-
+```
     <div id="chat-window" class="chat-hidden">
         <div class="chat-header">
             <div>
@@ -48,7 +42,7 @@
             </div>
         </div>
 
-        <form id="chat-form" onsubmit="return false;"></form>
+        <form id="chat-form">
             <input
                 id="chat-input"
                 type="text"
