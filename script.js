@@ -308,7 +308,26 @@
                     }
                 );
 
-                const data = await response.json();
+                
+const responseText = await response.text();
+
+let data = {};
+
+try {
+    data = responseText ? JSON.parse(responseText) : {};
+} catch (parseError) {
+    console.error("Invalid response from server:", responseText);
+    throw new Error(
+        `Server returned an invalid response (HTTP ${response.status}).`
+    );
+}
+
+if (!response.ok) {
+    throw new Error(
+        data.error || `Chat request failed (HTTP ${response.status})`
+    );
+}
+
 
                 if (!response.ok) {
                     throw new Error(
