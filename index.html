@@ -17,12 +17,20 @@
     
 <!-- AI Chatbot -->
 <div id="chatbot">
-    <button
-        id="chat-toggle"
-        type="button"
-        aria-label="Open AI chat"
-        style="position: fixed; right: 24px; bottom: 96px; z-index: 999999; pointer-events: auto;"
-    >💬</button>
+    
+<button
+    id="chat-toggle"
+    type="button"
+    aria-label="Open AI chat"
+    onclick="
+        const panel = document.getElementById('chat-window');
+        panel.classList.remove('chat-hidden');
+        panel.style.setProperty('display', 'flex', 'important');
+        panel.style.setProperty('visibility', 'visible', 'important');
+        panel.style.setProperty('opacity', '1', 'important');
+    "
+    style="position:fixed;right:24px;bottom:96px;z-index:2147483647;pointer-events:auto;cursor:pointer;"
+>💬</button>
 
     <div id="chat-window" class="chat-hidden">
         <div class="chat-header">

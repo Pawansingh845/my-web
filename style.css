@@ -2327,3 +2327,15 @@ footer {
 #chat-window.chat-hidden {
     display: none !important;
 }
+
+#chat-window.chat-hidden {
+    display: none !important;
+}
+
+#chat-window:not(.chat-hidden) {
+    display: flex !important;
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 168px !important;
+    z-index: 2147483646 !important;
+}
