@@ -2272,13 +2272,33 @@ footer {
 }
 
 /* FINAL AI CHATBOT VISIBILITY AND POSITION */
+
+/* ================= CHATBOT POSITION FIX ================= */
+
 #chat-toggle {
     position: fixed !important;
     right: 24px !important;
     bottom: 24px !important;
-    z-index: 1000000 !important;
+    top: auto !important;
+    width: 60px;
+    height: 60px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 2147483647 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     pointer-events: auto !important;
     cursor: pointer !important;
+}
+
+#chat-window {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 96px !important;
+    width: min(360px, calc(100vw - 32px));
+    max-height: calc(100dvh - 120px);
+    z-index: 2147483646 !important;
 }
 
 #chat-window.chat-hidden {
@@ -2287,10 +2307,6 @@ footer {
 
 #chat-window:not(.chat-hidden) {
     display: flex !important;
-    position: fixed !important;
-    right: 24px !important;
-    bottom: 96px !important;
-    z-index: 999999 !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
@@ -2301,41 +2317,16 @@ footer {
     pointer-events: auto !important;
 }
 
-/* CHATBOT BUTTON — KEEP IT HIGHER */
-#chat-toggle {
-    position: fixed !important;
-    right: 24px !important;
-    bottom: 96px !important;
-    top: auto !important;
-    z-index: 2147483647 !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-}
+@media (max-width: 480px) {
+    #chat-toggle {
+        right: 16px !important;
+        bottom: 16px !important;
+    }
 
-/* CHAT WINDOW */
-#chat-window:not(.chat-hidden) {
-    position: fixed !important;
-    right: 24px !important;
-    bottom: 168px !important;
-    z-index: 2147483646 !important;
-}
-
-/* CLOSED CHAT WINDOW */
-#chat-window.chat-hidden {
-    display: none !important;
-}
-
-#chat-window.chat-hidden {
-    display: none !important;
-}
-
-#chat-window:not(.chat-hidden) {
-    display: flex !important;
-    position: fixed !important;
-    right: 24px !important;
-    bottom: 168px !important;
-    z-index: 2147483646 !important;
+    #chat-window {
+        right: 16px !important;
+        bottom: 88px !important;
+        width: calc(100vw - 32px);
+        max-height: calc(100dvh - 110px);
+    }
 }
