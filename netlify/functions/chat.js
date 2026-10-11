@@ -95,8 +95,13 @@ You may answer general DevOps technical questions too.`
 
     if (!response.ok) {
       // Read the error body once and log details server-side.
-      const errorBody = await response.text();
-
+      return {
+  statusCode: 502,
+  headers,
+  body: JSON.stringify({
+    error: `Groq API failed with HTTP ${response.status}`
+  })
+};
       console.error("Groq API error:", {
         status: response.status,
         details: errorBody.slice(0, 1500)
