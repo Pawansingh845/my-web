@@ -2082,7 +2082,7 @@ footer {
 #chat-toggle {
   position: fixed;
   right: 24px;
-  bottom: 24px;
+  bottom: calc(24px + 1in);
   width: 60px;
   height: 60px;
   border: 0;
@@ -2098,7 +2098,7 @@ footer {
 #chat-window {
   position: fixed;
   right: 24px;
-  bottom: 96px;
+  bottom: 192px;
   width: min(360px, calc(100vw - 32px));
   height: 460px;
   max-height: calc(100dvh - 125px);
