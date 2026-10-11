@@ -17,10 +17,29 @@ exports.handler = async (event) => {
     const apiKey = process.env.GROQ_API_KEY;
 
     if (!apiKey) {
-      throw new Error("GROQ_API_KEY is not configured");
+      console.error("GROQ_API_KEY is missing from the function environment.");
+
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          error: "Server configuration issue: API key is missing."
+        })
+      };
     }
 
-    const body = JSON.parse(event.body || "{}");
+    let body;
+
+    try {
+      body = JSON.parse(event.body || "{}");
+    } catch {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "Invalid JSON request." })
+      };
+    }
+
     const message = body.message;
 
     if (
@@ -50,8 +69,7 @@ exports.handler = async (event) => {
           messages: [
             {
               role: "system",
-              content: `You are the AI assistant on Pawan Singh's
-DevOps portfolio website.
+              content: `You are the AI assistant on Pawan Singh's DevOps portfolio website.
 
 Pawan's stated skills include Azure, AWS, Kubernetes,
 Docker, Terraform, Jenkins, CI/CD, DevSecOps,
@@ -59,12 +77,9 @@ monitoring, Linux and Git.
 
 Answer in the language used by the visitor.
 Be friendly, concise and professional.
-Only state facts about Pawan that are provided here
-or explicitly published on his portfolio.
-Do not invent employers, certifications, projects,
-contact details or achievements.
-For unknown personal details, suggest contacting Pawan
-through the portfolio's contact section.
+Only state facts about Pawan provided here or explicitly published on his portfolio.
+Do not invent employers, certifications, projects, contact details or achievements.
+For unknown personal details, suggest contacting Pawan through the portfolio's contact section.
 You may answer general DevOps technical questions too.`
             },
             {
@@ -79,14 +94,26 @@ You may answer general DevOps technical questions too.`
     );
 
     if (!response.ok) {
-      console.error("Groq API returned status:", response.status);
+      // Read the error body once and log details server-side.
+      const errorBody = await response.text();
+
+      console.error("Groq API error:", {
+        status: response.status,
+        details: errorBody.slice(0, 1500)
+      });
+
+      let userMessage = "AI service is temporarily unavailable. Please try again.";
+
+      if (response.status === 401 || response.status === 403) {
+        userMessage = "AI service authentication failed. Please contact the site owner.";
+      } else if (response.status === 429) {
+        userMessage = "AI service is busy or its usage limit has been reached. Please try again later.";
+      }
 
       return {
         statusCode: 502,
         headers,
-        body: JSON.stringify({
-          error: "AI service is temporarily unavailable. Please try again."
-        })
+        body: JSON.stringify({ error: userMessage })
       };
     }
 
@@ -94,7 +121,15 @@ You may answer general DevOps technical questions too.`
     const reply = data.choices?.[0]?.message?.content;
 
     if (!reply) {
-      throw new Error("Empty AI response");
+      console.error("Groq returned no message content.");
+
+      return {
+        statusCode: 502,
+        headers,
+        body: JSON.stringify({
+          error: "AI returned an empty response. Please try again."
+        })
+      };
     }
 
     return {
@@ -102,6 +137,7 @@ You may answer general DevOps technical questions too.`
       headers,
       body: JSON.stringify({ reply })
     };
+
   } catch (error) {
     console.error("Chat function error:", error.message);
 
@@ -109,7 +145,7 @@ You may answer general DevOps technical questions too.`
       statusCode: 500,
       headers,
       body: JSON.stringify({
-        error: "Something went wrong. Please try again."
+        error: "Chat server error. Please try again."
       })
     };
   }
