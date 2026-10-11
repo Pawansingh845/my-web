@@ -2270,3 +2270,33 @@ footer {
     max-height: calc(100dvh - 170px);
   }
 }
+
+/* FINAL AI CHATBOT VISIBILITY AND POSITION */
+#chat-toggle {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 24px !important;
+    z-index: 1000000 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+#chat-window.chat-hidden {
+    display: none !important;
+}
+
+#chat-window:not(.chat-hidden) {
+    display: flex !important;
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 96px !important;
+    z-index: 999999 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+#chat-window button,
+#chat-window input {
+    pointer-events: auto !important;
+}

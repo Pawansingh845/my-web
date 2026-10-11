@@ -1,27 +1,23 @@
 
 /* =====================================================
-   PAWAN SINGH - DEVOPS PORTFOLIO
-   Complete JavaScript + AI Chatbot
+   PAWAN SINGH - DEVOPS PORTFOLIO + AI CHATBOT
 ===================================================== */
 
 (function () {
     "use strict";
 
     function initializePortfolio() {
-        console.log("Pawan Singh DevOps Portfolio Loaded");
+        console.log("Portfolio JavaScript loaded.");
 
         /* NAVBAR ACTIVE LINK */
         const sections = document.querySelectorAll("section[id]");
         const navLinks = document.querySelectorAll("nav a");
 
-        window.addEventListener("scroll", function () {
+        function updateActiveLink() {
             let currentSection = "";
 
             sections.forEach(function (section) {
-                const top = section.offsetTop - 120;
-                const bottom = top + section.offsetHeight;
-
-                if (window.scrollY >= top && window.scrollY < bottom) {
+                if (window.scrollY >= section.offsetTop - 140) {
                     currentSection = section.id;
                 }
             });
@@ -32,17 +28,18 @@
                     link.getAttribute("href") === "#" + currentSection
                 );
             });
-        });
+        }
+
+        window.addEventListener("scroll", updateActiveLink);
+        updateActiveLink();
 
         /* SMOOTH SCROLL */
         navLinks.forEach(function (link) {
             link.addEventListener("click", function (event) {
-                const href = this.getAttribute("href");
-
-                if (!href || !href.startsWith("#") || href === "#") return;
+                const href = link.getAttribute("href");
+                if (!href || !href.startsWith("#")) return;
 
                 const target = document.querySelector(href);
-
                 if (target) {
                     event.preventDefault();
                     target.scrollIntoView({ behavior: "smooth" });
@@ -75,15 +72,15 @@
             });
         }
 
-        /* RESUME DOWNLOAD */
+        /* RESUME DOWNLOAD LOG */
         document.querySelectorAll('a[href="assets/resume.pdf"]')
-            .forEach(function (button) {
-                button.addEventListener("click", function () {
-                    console.log("Resume download started");
+            .forEach(function (link) {
+                link.addEventListener("click", function () {
+                    console.log("Resume download started.");
                 });
             });
 
-        /* TERMINAL TYPING EFFECT */
+        /* TERMINAL TEXT ROTATION */
         const terminalLines = [
             "Azure | Kubernetes | Terraform",
             "Jenkins | Docker | Ansible",
@@ -108,14 +105,15 @@
 
         window.setInterval(updateTerminal, 3000);
 
-        /* CURRENT YEAR */
-        document.querySelectorAll("footer p:first-child")
-            .forEach(function (element) {
-                element.textContent =
-                    "© " + new Date().getFullYear() + " Pawan Singh";
-            });
+        /* FOOTER YEAR */
+        document.querySelectorAll("footer p:first-child").forEach(function (p) {
+            p.textContent = "© " + new Date().getFullYear() + " Pawan Singh";
+        });
 
-        /* AI CHATBOT */
+        /* =================================================
+           AI CHATBOT
+        ================================================= */
+
         const chatToggle = document.getElementById("chat-toggle");
         const chatWindow = document.getElementById("chat-window");
         const chatClose = document.getElementById("chat-close");
@@ -129,30 +127,35 @@
             !chatForm || !chatInput || !chatMessages || !chatSend
         ) {
             console.error(
-                "Chatbot setup failed: Check all chatbot IDs in index.html."
+                "Chatbot initialization failed. Check chatbot IDs in index.html."
             );
             return;
         }
 
-        console.log("AI Chatbot initialized successfully.");
-
-        /* OPEN / CLOSE CHAT */
+        /* OPEN CHAT */
         function openChat() {
             chatWindow.classList.remove("chat-hidden");
-            chatWindow.style.display = "flex";
+            chatWindow.style.setProperty("display", "flex", "important");
+            chatWindow.style.setProperty("visibility", "visible", "important");
+            chatWindow.style.setProperty("opacity", "1", "important");
+            chatWindow.style.setProperty("z-index", "999999", "important");
             chatWindow.setAttribute("aria-hidden", "false");
+            chatToggle.setAttribute("aria-expanded", "true");
             chatInput.focus();
         }
 
+        /* CLOSE CHAT */
         function closeChat() {
             chatWindow.classList.add("chat-hidden");
-            chatWindow.style.display = "none";
+            chatWindow.style.setProperty("display", "none", "important");
             chatWindow.setAttribute("aria-hidden", "true");
+            chatToggle.setAttribute("aria-expanded", "false");
         }
 
-        // Ensure the chat starts closed
+        /* Start closed */
         closeChat();
 
+        /* One click handler only */
         chatToggle.addEventListener("click", function (event) {
             event.preventDefault();
             event.stopPropagation();
@@ -169,16 +172,14 @@
             closeChat();
         });
 
-        /* ADD CHAT MESSAGE */
+        /* CHAT MESSAGE DISPLAY */
         function addChatMessage(message, type) {
             const element = document.createElement("div");
             element.className =
                 type === "user" ? "user-message" : "bot-message";
             element.textContent = message;
-
             chatMessages.appendChild(element);
             chatMessages.scrollTop = chatMessages.scrollHeight;
-
             return element;
         }
 
@@ -187,7 +188,6 @@
             event.preventDefault();
 
             const message = chatInput.value.trim();
-
             if (!message || chatSend.disabled) return;
 
             addChatMessage(message, "user");
@@ -213,13 +213,12 @@
                 }
 
                 loadingMessage.textContent =
-                    data.reply || "No answer received.";
+                    data.reply || "The assistant returned an empty response.";
 
             } catch (error) {
-                console.error("Chatbot request error:", error);
-
+                console.error("Chatbot request failed:", error);
                 loadingMessage.textContent =
-                    "Sorry, I couldn't get an answer. Please try again.";
+                    "Sorry, the request failed. Please try again.";
             } finally {
                 chatSend.disabled = false;
                 chatSend.textContent = "Send";
@@ -227,34 +226,13 @@
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         });
+
+        console.log("AI chatbot initialized successfully.");
     }
 
-    // Works whether this file loads before or after DOMContentLoaded
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initializePortfolio);
     } else {
         initializePortfolio();
     }
 })();
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const button = document.getElementById("chat-toggle");
-    const panel = document.getElementById("chat-window");
-
-    if (!button || !panel) {
-        alert("Chatbot HTML element missing!");
-        return;
-    }
-
-    button.onclick = function () {
-        alert("Chat button click is working!");
-
-        panel.classList.remove("chat-hidden");
-        panel.style.setProperty("display", "flex", "important");
-        panel.style.setProperty("visibility", "visible", "important");
-        panel.style.setProperty("opacity", "1", "important");
-        panel.style.setProperty("z-index", "999999", "important");
-    };
-});
-
