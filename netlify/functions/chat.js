@@ -1,3 +1,4 @@
+
 exports.handler = async (event) => {
   const headers = {
     "Content-Type": "application/json",
@@ -14,6 +15,7 @@ exports.handler = async (event) => {
 
   try {
     const apiKey = process.env.GROQ_API_KEY;
+    const sheetUrl = process.env.GOOGLE_SCRIPT_URL;
 
     if (!apiKey) {
       console.error("GROQ_API_KEY is missing.");
@@ -41,6 +43,12 @@ exports.handler = async (event) => {
 
     const message = body.message;
 
+    const sessionId =
+      typeof body.sessionId === "string" &&
+      /^[a-zA-Z0-9_-]{1,100}$/.test(body.sessionId)
+        ? body.sessionId
+        : "unknown";
+
     if (
       typeof message !== "string" ||
       !message.trim() ||
@@ -55,12 +63,12 @@ exports.handler = async (event) => {
       };
     }
 
+    const userMessage = message.trim();
+
     const systemPrompt = `
 You are the AI assistant on Pawan Singh's personal portfolio website.
 
-Use the following verified portfolio information to answer questions.
-Never say a detail is unavailable if it is provided below.
-Never invent personal facts or achievements.
+Use this verified portfolio information. Never invent personal facts.
 
 PROFILE:
 Name: Pawan Singh
@@ -77,39 +85,28 @@ SAST, DAST, Trivy, Checkov, tfsec, Prometheus, Grafana,
 Loki, Azure Monitor, Log Analytics, Linux, RHEL, Ubuntu,
 Bash, YAML, Git, RBAC, Network Policies and container security.
 
-CONTACT DETAILS:
+CONTACT:
 Email: pawan.ardom@gmail.com
 Phone: +91 9151625909
 GitHub: https://github.com/Pawansingh845
-Website:  https://techzonepawan.netlify.app
-linkedin: www.linkedin.com/in/pawan-singh-a03178225
-facebook: https://www.facebook.com/pawan.singh.58
+Website: https://techzonepawan.netlify.app
+LinkedIn: https://www.linkedin.com/in/pawan-singh-a03178225
+Facebook: https://www.facebook.com/pawan.singh.58
+
 CERTIFICATION:
 Microsoft Certified: Azure Fundamentals (AZ-900).
 
 WORK EXPERIENCE:
-Transtrack Aroservices
-Reliance
-Aerial
-Ardom Towergen
-B4S Solutions
-Kutumbh Care
-Ardom Telecom
-Team Lease
+Transtrack Aroservices, Reliance, Aerial, Ardom Towergen,
+B4S Solutions, Kutumbh Care, Ardom Telecom, Team Lease.
 
-BEHAVIOUR RULES:
-1. If asked for contact details, provide the email and phone number above.
-2. If asked for GitHub, provide the complete GitHub URL above.
-3. Answer questions about skills, experience, certification and employers
-   using the information supplied here.
-4. Answer in the language used by the visitor, including Hindi or Hinglish.
-5. Never claim that listed contact information is missing.
-6. Do not invent employment dates, project details, education, additional
-   certifications or achievements.
-7. If a specific fact is not included above, say that you do not have
-   that specific detail and suggest checking the portfolio or contacting Pawan.
-8. You can also answer general DevOps technical questions.
-9. Keep responses friendly, concise and professional.
+RULES:
+1. Answer in the visitor's language, including Hindi or Hinglish.
+2. Give the email and phone when asked for contact details.
+3. Never invent employment dates, projects, education or certifications.
+4. If a personal fact is missing, say you do not have that detail.
+5. You can answer general DevOps technical questions.
+6. Keep responses friendly, concise and professional.
 `;
 
     const response = await fetch(
@@ -123,14 +120,8 @@ BEHAVIOUR RULES:
         body: JSON.stringify({
           model: "openai/gpt-oss-120b",
           messages: [
-            {
-              role: "system",
-              content: systemPrompt
-            },
-            {
-              role: "user",
-              content: message.trim()
-            }
+            { role: "system", content: systemPrompt },
+            { role: "user", content: userMessage }
           ],
           temperature: 0.3,
           max_tokens: 600
@@ -143,24 +134,18 @@ BEHAVIOUR RULES:
 
       console.error("Groq API error:", {
         status: response.status,
-        details: errorBody.slice(0, 1000)
+        details: errorBody.slice(0, 500)
       });
 
-      let userMessage =
-        "AI service is temporarily unavailable. Please try again.";
-
-      if (response.status === 401 || response.status === 403) {
-        userMessage =
-          "AI service authentication failed. Please contact the site owner.";
-      } else if (response.status === 429) {
-        userMessage =
-          "AI usage limit reached. Please try again later.";
-      }
+      const errorMessage =
+        response.status === 429
+          ? "AI usage limit reached. Please try again later."
+          : "AI service is temporarily unavailable. Please try again.";
 
       return {
         statusCode: 502,
         headers,
-        body: JSON.stringify({ error: userMessage })
+        body: JSON.stringify({ error: errorMessage })
       };
     }
 
@@ -168,8 +153,6 @@ BEHAVIOUR RULES:
     const reply = data.choices?.[0]?.message?.content;
 
     if (!reply) {
-      console.error("Groq returned no message content.");
-
       return {
         statusCode: 502,
         headers,
@@ -177,6 +160,34 @@ BEHAVIOUR RULES:
           error: "AI returned an empty response. Please try again."
         })
       };
+    }
+
+    // Save the question and answer to Google Sheets.
+    // Chat response remains available even if logging fails.
+    if (sheetUrl) {
+      try {
+        const logResponse = await fetch(sheetUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({
+            sessionId,
+            message: userMessage,
+            reply,
+            timestamp: new Date().toISOString()
+          }),
+          redirect: "follow"
+        });
+
+        if (!logResponse.ok) {
+          console.error("Google Sheets logging failed:", logResponse.status);
+        }
+      } catch (logError) {
+        console.error("Google Sheets logging error:", logError.message);
+      }
+    } else {
+      console.error("GOOGLE_SCRIPT_URL is missing.");
     }
 
     return {
