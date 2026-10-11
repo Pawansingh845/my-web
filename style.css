@@ -2300,3 +2300,30 @@ footer {
 #chat-window input {
     pointer-events: auto !important;
 }
+
+/* CHATBOT BUTTON — KEEP IT HIGHER */
+#chat-toggle {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 96px !important;
+    top: auto !important;
+    z-index: 2147483647 !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* CHAT WINDOW */
+#chat-window:not(.chat-hidden) {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 168px !important;
+    z-index: 2147483646 !important;
+}
+
+/* CLOSED CHAT WINDOW */
+#chat-window.chat-hidden {
+    display: none !important;
+}
