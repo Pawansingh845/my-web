@@ -209,17 +209,23 @@
 
                 const data = await response.json();
 
-                if (!response.ok) {
-                    throw new Error(data.error || "Chat request failed.");
+               if (!response.ok) {
+  throw new Error(
+    data.error || `Chat request failed (${response.status})`
+  );
+
                 }
 
                 loadingMessage.textContent =
                     data.reply || "The assistant returned an empty response.";
 
-            } catch (error) {
-                console.error("Chatbot request failed:", error);
-                loadingMessage.textContent =
-                    "Sorry, the request failed. Please try again.";
+            
+             } catch (error) {
+             console.error("Chatbot request failed:", error);
+             loadingMessage.textContent =
+             error.message || "Sorry, the request failed. Please try again.";
+}
+
             } finally {
                 chatSend.disabled = false;
                 chatSend.textContent = "Send";
