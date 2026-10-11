@@ -186,6 +186,7 @@
         /* SEND MESSAGE TO NETLIFY FUNCTION */
         chatForm.addEventListener("submit", async function (event) {
             event.preventDefault();
+            event.stopPropagation();
 
             const message = chatInput.value.trim();
             if (!message || chatSend.disabled) return;
