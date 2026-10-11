@@ -236,3 +236,25 @@
         initializePortfolio();
     }
 })();
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById("chat-toggle");
+    const panel = document.getElementById("chat-window");
+
+    if (!button || !panel) {
+        alert("Chatbot HTML element missing!");
+        return;
+    }
+
+    button.onclick = function () {
+        alert("Chat button click is working!");
+
+        panel.classList.remove("chat-hidden");
+        panel.style.setProperty("display", "flex", "important");
+        panel.style.setProperty("visibility", "visible", "important");
+        panel.style.setProperty("opacity", "1", "important");
+        panel.style.setProperty("z-index", "999999", "important");
+    };
+});
+
