@@ -2076,3 +2076,140 @@ footer {
     background: #03070c;
     border-top: 1px solid rgba(71, 230, 161, .12);
 }
+
+
+/* AI Portfolio Chatbot */
+#chat-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  border: 0;
+  border-radius: 50%;
+  background: #16a085;
+  color: white;
+  font-size: 27px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px #0005;
+  z-index: 9999;
+}
+
+#chat-window {
+  position: fixed;
+  right: 24px;
+  bottom: 96px;
+  width: min(360px, calc(100vw - 32px));
+  height: 460px;
+  max-height: calc(100dvh - 125px);
+  display: flex;
+  flex-direction: column;
+  background: #101b27;
+  color: #f3f7fb;
+  border: 1px solid #2b3b4b;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px #0006;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+#chat-window.chat-hidden {
+  display: none;
+}
+
+.chat-header {
+  padding: 16px;
+  background: #163c38;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header small {
+  display: block;
+  margin-top: 5px;
+  color: #c1d9d4;
+}
+
+#chat-close {
+  background: transparent;
+  color: white;
+  border: 0;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+#chat-messages {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bot-message,
+.user-message {
+  padding: 11px 13px;
+  border-radius: 12px;
+  max-width: 88%;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background: #233344;
+}
+
+.user-message {
+  align-self: flex-end;
+  background: #147d68;
+}
+
+#chat-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #2b3b4b;
+}
+
+#chat-input {
+  min-width: 0;
+  flex: 1;
+  padding: 11px;
+  border: 1px solid #435466;
+  border-radius: 9px;
+  background: #172533;
+  color: white;
+  font-size: 14px;
+}
+
+#chat-send {
+  border: 0;
+  border-radius: 9px;
+  background: #16a085;
+  color: white;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+#chat-send:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+@media (max-width: 480px) {
+  #chat-toggle {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  #chat-window {
+    right: 16px;
+    bottom: 88px;
+  }
+}

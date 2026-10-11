@@ -221,3 +221,73 @@ yearElements.forEach(function (element) {
         " Pawan Singh";
 
 });
+
+
+const chatToggle = document.getElementById("chat-toggle");
+const chatWindow = document.getElementById("chat-window");
+const chatClose = document.getElementById("chat-close");
+const chatForm = document.getElementById("chat-form");
+const chatInput = document.getElementById("chat-input");
+const chatMessages = document.getElementById("chat-messages");
+const chatSend = document.getElementById("chat-send");
+
+chatToggle.addEventListener("click", () => {
+  chatWindow.classList.toggle("chat-hidden");
+  if (!chatWindow.classList.contains("chat-hidden")) {
+    chatInput.focus();
+  }
+});
+
+chatClose.addEventListener("click", () => {
+  chatWindow.classList.add("chat-hidden");
+});
+
+function addChatMessage(message, type) {
+  const element = document.createElement("div");
+  element.className = type === "user" ? "user-message" : "bot-message";
+  element.textContent = message;
+  chatMessages.appendChild(element);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return element;
+}
+
+chatForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const message = chatInput.value.trim();
+  if (!message || chatSend.disabled) return;
+
+  addChatMessage(message, "user");
+  chatInput.value = "";
+  chatSend.disabled = true;
+  chatSend.textContent = "...";
+
+  const loading = addChatMessage("Thinking...", "bot");
+
+  try {
+    const response = await fetch("/.netlify/functions/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Chat request failed.");
+    }
+
+    loading.textContent = data.reply || "No answer received.";
+  } catch (error) {
+    loading.textContent =
+      "Sorry, I couldn't get an answer. Please try again.";
+    console.error("Chatbot error:", error);
+  } finally {
+    chatSend.disabled = false;
+    chatSend.textContent = "Send";
+    chatInput.focus();
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+});

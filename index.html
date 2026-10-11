@@ -13,7 +13,41 @@
 </head>
 
 <body>
+    <!-- AI Chatbot -->
+    <div id="chatbot">
+        <button id="chat-toggle" aria-label="Open AI chat">
+            💬
+        </button>
 
+        <div id="chat-window" class="chat-hidden">
+            <div class="chat-header">
+                <div>
+                    <strong>DevOps AI Assistant</strong>
+                    <small>Ask me about Pawan</small>
+                </div>
+                <button id="chat-close" aria-label="Close chat">×</button>
+            </div>
+
+            <div id="chat-messages" aria-live="polite">
+                <div class="bot-message">
+                    Hi! 👋 Ask me about Pawan's DevOps skills,
+                    experience, Azure, Kubernetes or projects.
+                </div>
+            </div>
+
+            <form id="chat-form">
+                <input
+                    id="chat-input"
+                    type="text"
+                    placeholder="Ask something..."
+                    maxlength="1000"
+                    autocomplete="off"
+                    required
+                />
+                <button id="chat-send" type="submit">Send</button>
+            </form>
+        </div>
+    </div>
     <!-- ================= NAVBAR ================= -->
 
     <header class="navbar">

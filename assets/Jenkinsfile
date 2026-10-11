@@ -1,0 +1,11 @@
+pipeline {
+    agent any 
+    stages {
+        stage ('gitcheckout'){
+            steps {
+            gitbranch: 'main'
+            url: 'https://github.com/Pawansingh845/my-web'
+            }
+        }
+    }
+}
