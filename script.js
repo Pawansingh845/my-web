@@ -374,3 +374,50 @@ if (!response.ok) {
         initializePortfolio();
     }
 })();
+// Google Analytics: Portfolio Activity Tracking
+document.addEventListener("DOMContentLoaded", () => {
+  // Track clicks on resume download links/buttons
+  document.querySelectorAll('a[href*="resume.pdf"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "resume_download", {
+          event_category: "engagement",
+          event_label: link.href
+        });
+      }
+    });
+  });
+
+  // Track contact email clicks
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "contact_click", {
+          contact_method: "email"
+        });
+      }
+    });
+  });
+
+  // Track chatbot open
+  const chatToggle = document.getElementById("chat-toggle");
+
+  if (chatToggle) {
+    chatToggle.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "chatbot_open");
+      }
+    });
+  }
+
+  // Track chatbot messages
+  const chatForm = document.getElementById("chat-form");
+
+  if (chatForm) {
+    chatForm.addEventListener("submit", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "chatbot_message_sent");
+      }
+    });
+  }
+});
