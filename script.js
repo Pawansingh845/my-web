@@ -4,258 +4,235 @@
    Complete JavaScript + AI Chatbot
 ===================================================== */
 
+(function () {
+    "use strict";
 
-/* ================= PAGE LOAD ================= */
+    function initializePortfolio() {
+        console.log("Pawan Singh DevOps Portfolio Loaded");
 
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Pawan Singh DevOps Portfolio Loaded");
-});
+        /* NAVBAR ACTIVE LINK */
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll("nav a");
 
+        window.addEventListener("scroll", function () {
+            let currentSection = "";
 
-/* ================= NAVBAR ACTIVE LINK ================= */
+            sections.forEach(function (section) {
+                const top = section.offsetTop - 120;
+                const bottom = top + section.offsetHeight;
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", function () {
-    let currentSection = "";
-
-    sections.forEach(function (section) {
-        const sectionTop = section.offsetTop - 120;
-        const sectionHeight = section.offsetHeight;
-
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-        ) {
-            currentSection = section.getAttribute("id");
-        }
-    });
-
-    navLinks.forEach(function (link) {
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + currentSection) {
-            link.classList.add("active");
-        }
-    });
-});
-
-
-/* ================= SMOOTH SCROLL ================= */
-
-navLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-        const targetId = this.getAttribute("href");
-
-        // Only handle internal section links
-        if (!targetId || !targetId.startsWith("#") || targetId === "#") {
-            return;
-        }
-
-        const target = document.querySelector(targetId);
-
-        if (target) {
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-    });
-});
-
-
-/* ================= SCROLL REVEAL ================= */
-
-const animatedElements = document.querySelectorAll(
-    ".skill-card, .experience-card, .education-card, .certification-card"
-);
-
-if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-        function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                    observer.unobserve(entry.target);
+                if (window.scrollY >= top && window.scrollY < bottom) {
+                    currentSection = section.id;
                 }
             });
-        },
-        {
-            threshold: 0.15
-        }
-    );
 
-    animatedElements.forEach(function (element) {
-        element.classList.add("hidden");
-        observer.observe(element);
-    });
-} else {
-    animatedElements.forEach(function (element) {
-        element.classList.add("show");
-    });
-}
+            navLinks.forEach(function (link) {
+                link.classList.toggle(
+                    "active",
+                    link.getAttribute("href") === "#" + currentSection
+                );
+            });
+        });
 
+        /* SMOOTH SCROLL */
+        navLinks.forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                const href = this.getAttribute("href");
 
-/* ================= DOWNLOAD RESUME ================= */
+                if (!href || !href.startsWith("#") || href === "#") return;
 
-const resumeButtons = document.querySelectorAll(
-    'a[href="assets/resume.pdf"]'
-);
+                const target = document.querySelector(href);
 
-resumeButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-        console.log("Resume download started");
-    });
-});
+                if (target) {
+                    event.preventDefault();
+                    target.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        });
 
-
-/* ================= TYPING EFFECT ================= */
-
-const terminalLines = [
-    "Azure | Kubernetes | Terraform",
-    "Jenkins | Docker | Ansible",
-    "DevSecOps | CI/CD | Git"
-];
-
-let lineIndex = 0;
-
-function updateTerminal() {
-    const terminalOutputs = document.querySelectorAll(".terminal-output");
-
-    if (terminalOutputs.length >= 3) {
-        terminalOutputs[0].textContent = terminalLines[lineIndex];
-
-        terminalOutputs[1].textContent =
-            terminalLines[(lineIndex + 1) % terminalLines.length];
-
-        terminalOutputs[2].textContent =
-            terminalLines[(lineIndex + 2) % terminalLines.length];
-    }
-
-    lineIndex = (lineIndex + 1) % terminalLines.length;
-}
-
-setInterval(updateTerminal, 3000);
-
-
-/* ================= CURRENT YEAR ================= */
-
-const yearElements = document.querySelectorAll("footer p:first-child");
-
-yearElements.forEach(function (element) {
-    element.textContent =
-        "© " + new Date().getFullYear() + " Pawan Singh";
-});
-
-
-/* ================= AI CHATBOT ================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-    const chatToggle = document.getElementById("chat-toggle");
-    const chatWindow = document.getElementById("chat-window");
-    const chatClose = document.getElementById("chat-close");
-    const chatForm = document.getElementById("chat-form");
-    const chatInput = document.getElementById("chat-input");
-    const chatMessages = document.getElementById("chat-messages");
-    const chatSend = document.getElementById("chat-send");
-
-    // Verify that chatbot HTML elements exist
-    if (
-        !chatToggle ||
-        !chatWindow ||
-        !chatClose ||
-        !chatForm ||
-        !chatInput ||
-        !chatMessages ||
-        !chatSend
-    ) {
-        console.error(
-            "Chatbot initialization failed: Check chatbot HTML element IDs."
+        /* SCROLL REVEAL */
+        const animatedElements = document.querySelectorAll(
+            ".skill-card, .experience-card, .education-card, .certification-card"
         );
-        return;
-    }
 
-    console.log("AI Chatbot initialized successfully.");
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
 
-    // Open and close the chatbot window
-    chatToggle.addEventListener("click", function () {
-        chatWindow.classList.toggle("chat-hidden");
-
-        if (!chatWindow.classList.contains("chat-hidden")) {
-            chatInput.focus();
+            animatedElements.forEach(function (element) {
+                element.classList.add("hidden");
+                observer.observe(element);
+            });
+        } else {
+            animatedElements.forEach(function (element) {
+                element.classList.add("show");
+            });
         }
-    });
 
-    // Close button
-    chatClose.addEventListener("click", function () {
-        chatWindow.classList.add("chat-hidden");
-    });
+        /* RESUME DOWNLOAD */
+        document.querySelectorAll('a[href="assets/resume.pdf"]')
+            .forEach(function (button) {
+                button.addEventListener("click", function () {
+                    console.log("Resume download started");
+                });
+            });
 
-    // Add message to chat window
-    function addChatMessage(message, type) {
-        const element = document.createElement("div");
+        /* TERMINAL TYPING EFFECT */
+        const terminalLines = [
+            "Azure | Kubernetes | Terraform",
+            "Jenkins | Docker | Ansible",
+            "DevSecOps | CI/CD | Git"
+        ];
 
-        element.className =
-            type === "user" ? "user-message" : "bot-message";
+        let lineIndex = 0;
 
-        element.textContent = message;
-        chatMessages.appendChild(element);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        function updateTerminal() {
+            const outputs = document.querySelectorAll(".terminal-output");
 
-        return element;
-    }
+            if (outputs.length >= 3) {
+                outputs[0].textContent = terminalLines[lineIndex];
+                outputs[1].textContent =
+                    terminalLines[(lineIndex + 1) % terminalLines.length];
+                outputs[2].textContent =
+                    terminalLines[(lineIndex + 2) % terminalLines.length];
+            }
 
-    // Send message to AI backend
-    chatForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
+            lineIndex = (lineIndex + 1) % terminalLines.length;
+        }
 
-        const message = chatInput.value.trim();
+        window.setInterval(updateTerminal, 3000);
 
-        if (!message || chatSend.disabled) {
+        /* CURRENT YEAR */
+        document.querySelectorAll("footer p:first-child")
+            .forEach(function (element) {
+                element.textContent =
+                    "© " + new Date().getFullYear() + " Pawan Singh";
+            });
+
+        /* AI CHATBOT */
+        const chatToggle = document.getElementById("chat-toggle");
+        const chatWindow = document.getElementById("chat-window");
+        const chatClose = document.getElementById("chat-close");
+        const chatForm = document.getElementById("chat-form");
+        const chatInput = document.getElementById("chat-input");
+        const chatMessages = document.getElementById("chat-messages");
+        const chatSend = document.getElementById("chat-send");
+
+        if (
+            !chatToggle || !chatWindow || !chatClose ||
+            !chatForm || !chatInput || !chatMessages || !chatSend
+        ) {
+            console.error(
+                "Chatbot setup failed: Check all chatbot IDs in index.html."
+            );
             return;
         }
 
-        addChatMessage(message, "user");
-        chatInput.value = "";
-        chatSend.disabled = true;
-        chatSend.textContent = "...";
+        console.log("AI Chatbot initialized successfully.");
 
-        const loadingMessage = addChatMessage("Thinking...", "bot");
-
-        try {
-            const response = await fetch("/.netlify/functions/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    message: message
-                })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(
-                    data.error || "Chat request failed."
-                );
-            }
-
-            loadingMessage.textContent =
-                data.reply || "No answer received.";
-
-        } catch (error) {
-            console.error("Chatbot request error:", error);
-
-            loadingMessage.textContent =
-                "Sorry, I couldn't get an answer. Please try again.";
-        } finally {
-            chatSend.disabled = false;
-            chatSend.textContent = "Send";
+        /* OPEN / CLOSE CHAT */
+        function openChat() {
+            chatWindow.classList.remove("chat-hidden");
+            chatWindow.style.display = "flex";
+            chatWindow.setAttribute("aria-hidden", "false");
             chatInput.focus();
-            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-    });
-});
+
+        function closeChat() {
+            chatWindow.classList.add("chat-hidden");
+            chatWindow.style.display = "none";
+            chatWindow.setAttribute("aria-hidden", "true");
+        }
+
+        // Ensure the chat starts closed
+        closeChat();
+
+        chatToggle.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (chatWindow.classList.contains("chat-hidden")) {
+                openChat();
+            } else {
+                closeChat();
+            }
+        });
+
+        chatClose.addEventListener("click", function (event) {
+            event.preventDefault();
+            closeChat();
+        });
+
+        /* ADD CHAT MESSAGE */
+        function addChatMessage(message, type) {
+            const element = document.createElement("div");
+            element.className =
+                type === "user" ? "user-message" : "bot-message";
+            element.textContent = message;
+
+            chatMessages.appendChild(element);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            return element;
+        }
+
+        /* SEND MESSAGE TO NETLIFY FUNCTION */
+        chatForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const message = chatInput.value.trim();
+
+            if (!message || chatSend.disabled) return;
+
+            addChatMessage(message, "user");
+            chatInput.value = "";
+            chatSend.disabled = true;
+            chatSend.textContent = "Sending...";
+
+            const loadingMessage = addChatMessage("Thinking...", "bot");
+
+            try {
+                const response = await fetch("/.netlify/functions/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || "Chat request failed.");
+                }
+
+                loadingMessage.textContent =
+                    data.reply || "No answer received.";
+
+            } catch (error) {
+                console.error("Chatbot request error:", error);
+
+                loadingMessage.textContent =
+                    "Sorry, I couldn't get an answer. Please try again.";
+            } finally {
+                chatSend.disabled = false;
+                chatSend.textContent = "Send";
+                chatInput.focus();
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    }
+
+    // Works whether this file loads before or after DOMContentLoaded
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initializePortfolio);
+    } else {
+        initializePortfolio();
+    }
+})();

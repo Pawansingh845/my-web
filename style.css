@@ -2213,3 +2213,60 @@ footer {
     bottom: 88px;
   }
 }
+
+
+/* ===== CHATBOT FIX ===== */
+
+#chat-toggle {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 96px !important;
+  width: 60px;
+  height: 60px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer;
+  z-index: 10001 !important;
+}
+
+#chat-window {
+  position: fixed !important;
+  right: 24px !important;
+  bottom: 168px !important;
+  width: min(360px, calc(100vw - 32px));
+  height: 460px;
+  max-height: calc(100dvh - 190px);
+  display: flex;
+  flex-direction: column;
+  visibility: visible;
+  opacity: 1;
+  z-index: 10000 !important;
+}
+
+#chat-window.chat-hidden {
+  display: none !important;
+}
+
+#chat-window #chat-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 480px) {
+  #chat-toggle {
+    right: 16px !important;
+    bottom: 80px !important;
+  }
+
+  #chat-window {
+    right: 16px !important;
+    bottom: 148px !important;
+    width: calc(100vw - 32px);
+    max-height: calc(100dvh - 170px);
+  }
+}
